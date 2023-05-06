@@ -121,20 +121,93 @@
 /* .....................main div ........................................ */
 #filter_div{
     width: 20%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     padding: 20px;
+    
 }
-#fit input{
+.fit{
+    margin-bottom: 20px;
+}
+.fit h4{
+    border-bottom: 1px solid black;
+}
+.fit input{
     width: 20px;
     height: 20px;
+    /* accent-color: red;
+    background: pink;
+    color:green; */
+   
 }
-#fit p{
+.fit p{
     font-size: 13px;
 }
-#fit div{
+.fit div{
     display: flex;
     gap: 20px;
     margin-top: 10px;
+    
 }
 
-
+/* .............................................. */
+/* .fit input:checked::before{
+   background-color: red;
+} */
+#black{
+    accent-color: black;
+}
+#pink{
+   accent-color: pink;
+}
+#white{
+    accent-color: rgb(255, 255, 255);
+}
+#blue{
+    accent-color: rgb(106, 106, 255);
+}
+#yellow{
+    accent-color: yellow;
+}
+#grey{
+    accent-color: grey;
+}
+/* .............................product container...................................... */
+#product_div{
+    width: 100%;
+    display:grid ;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 20px;
+    gap: 20px   ;
+    /* height: 600px;
+    overflow:scroll; */
+}
+#main{
+    display: flex;
+    /* height: 750px;
+    overflow:scroll; */
+}
+.product_img{
+    width: 100%;
+}
+.fav_icon{
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+}
+.title_div{
+    display: flex;
+    justify-content:space-between ;
+    gap:10px;
+}
+.title_div p{
+    font-size: 15px;
+    width: 80%;
+    /* border: 1px solid red; */
+}
+.card h4{
+    margin: 5px;
+}
+.multibuy{
+    font-size: 13px;
+    font-weight: 200;
+}

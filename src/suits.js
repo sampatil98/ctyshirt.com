@@ -6,7 +6,7 @@ window.addEventListener("load",()=>{
 });
 
 function fetchdata(){
-    fetch("http://localhost:8080/product/?q=shirt")
+    fetch("http://localhost:8080/product/?q=suit")
     .then((res)=>{
         return res.json();
     })
