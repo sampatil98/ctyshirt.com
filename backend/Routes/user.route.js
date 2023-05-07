@@ -20,7 +20,7 @@ userRoute.post("/register",async(req,res)=>{
                 await newuser.save();
                 res.status(200).send({"msg":"User Added"});
             }else{
-                res.status(400).send({"err":err.message});
+                res.status(400).send({"msg":err.message});
             }
         })
 
@@ -38,7 +38,7 @@ userRoute.post("/login",async(req,res)=>{
             bcrypt.compare(password,user.password,(err,result)=>{
                 if(result){
                     const token= jwt.sign({userId:user["_id"],username:user.firstname+" "+user.lastname},"sambhaji");
-                    res.status(200).send({"msg":"login successful","token":token});
+                    res.status(200).send({"msg":"login successful","token":token,"user":user.firstname});
                     
                 } else {
                     res.status(200).send({"msg":"wrong Password"});
@@ -49,7 +49,7 @@ userRoute.post("/login",async(req,res)=>{
         }
 
     }catch(err){
-        res.status(400).send({"err":err.message})
+        res.status(400).send({"msg":err.message})
     }
 })
 

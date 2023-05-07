@@ -1,0 +1,263 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+/*,....................... nav bar start here................................ */
+#navbar{
+    width: auto;
+    height: 80px;
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+    padding: 0px 50px;
+   
+}
+.nav_logo{
+    width: 25px;
+    height: 25px ;
+    gap: 30px;
+   
+}
+#logo_div img{
+   width: 100%;
+   height:80px;
+}
+#nav_leftdiv{
+    display: flex;
+    gap: 40px;
+}
+#searchbox{
+    background-color: rgb(237, 241, 245);
+    width: 250px;
+    height: 40px;
+    border: none;
+   
+    padding-left: 10px;
+}
+#search_btn{
+    background-color: rgb(237, 241, 245);
+    border: none;
+    padding: 0px 10px;
+    height: 42px;
+}
+#nav_right{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+#serch_div{
+    display: flex;
+    align-items:center ;
+    gap: 0px;
+}
+#searchbox:focus{
+    outline: none;
+}
+
+/*,....................... nav bar ends here................................ */
+
+#below_nav{
+    background-color: rgba(228, 234, 240, 0.897);
+    display:flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+#below_nav p{
+    padding: 7px 30px;
+    border-right: 1px solid gray;
+    color: rgb(108, 108, 108);
+
+}
+#below_nav p:last-child{
+    border: none;
+}
+#below_nav p:hover {
+    
+    cursor: pointer;
+    background-color: whitesmoke;
+    /* border-bottom: 2px solid rgb(39, 39, 89) ; */
+}
+/* .............................................................. */
+.card{
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+   
+}
+#img_div{
+    width: 40%;
+}
+#img_div img{
+    width: 100%;
+}
+#right_div{
+    width: 30%;
+    padding: 0px 20px;
+}
+#middle_div{
+    padding: 10px 0px;
+}
+#middle_div button{
+    padding: 8px;
+    background-color: white;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#add_to_bag_btn{
+    width: 100%;
+    padding: 15px;
+    background-color: rgb(35, 24, 67);
+    border: none;
+    margin-bottom: 30px;
+    color: aliceblue;
+}
+#add_to_bag_btn:hover{
+    cursor: pointer;
+    background-color:rgb(76, 64, 123) ;
+}
+
+#product_detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgb(220, 220, 220);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#product_detail img{
+    width: 50px;
+}
+#desc{
+    font-size: 13px;
+}
+#multibuy_div{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+/* ............................................................. */
+#contact_div{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    gap: 20px;
+    background-color: rgb(210, 225, 238);
+}
+#contact_div input{
+    padding: 8px 20px;
+    border: 1px solid rgb(26, 26, 85);
+    /* border: none; */
+}
+#contact_div button{
+    padding: 9px 12px;
+    margin-left: -5px;
+    border: none;
+    background-color: rgb(44, 44, 132);
+    color: aliceblue;
+}
+/* ....................footer start here........................ */
+footer{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    margin-top: 20px;
+    margin-bottom: 30px;
+    gap: 50px   ;
+    
+}
+.footer_div{
+   
+    margin-top: 10px;
+    
+}
+.footer_div p{
+    font-size: 13px;
+    margin-top: 10px;
+}
+.footer_div p:nth-child(1){
+    color: rgb(50, 50, 198);
+   
+    margin-bottom: 30px;
+    font-weight: 600;
+} 
+#handels img{
+    margin-top: 10px;
+    width: 30px;
+}
+/* ......................................popup start here...................................... */
+
+.popup_div{
+   
+    width: 30%;
+    background-color: aliceblue;
+    padding: 10px;
+    /* display: none; */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50% ) scale(0.1);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+.open-popup{
+    top: 50%;
+    visibility: visible;
+    transform: translate(-50%, -50% ) scale(1);
+}
+.popup_top_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0px 10px;
+}
+.popup_top_div button{
+    padding: 5px;
+    border: none;
+    background-color: aliceblue;
+}
+.popup_middle_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 10px;
+   
+}
+.popup_middle_div img{
+    width: 50%;
+}
+.go_to_bag_btn{
+    padding: 10px ;
+    width: 100%;
+    background-color: rgb(41, 41, 94);
+    color: white;
+    border: none;
+}
+.go_to_bag_btn:hover,.continue_btn:hover,#cancle:hover{
+    cursor: pointer;
+}
+.continue_btn{
+    padding: 10px ;
+    width: 100%;
+    background-color: white;
+    color: rgb(156, 156, 156);
+    border: none;
+    margin-top: 15px;
+}
+#title_bag,#price_bag{
+    margin-top: 15px;
+}
+

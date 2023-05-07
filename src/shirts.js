@@ -37,6 +37,11 @@ function showdata(data){
         let title=document.createElement("p");
         title.innerText=element.title;
 
+        title.addEventListener("click",()=>{
+            localStorage.setItem("product",JSON.stringify(element));
+            window.location.href="/product.html";
+        });
+
         let fav=document.createElement("img");
         fav.setAttribute("class","fav_icon");
         fav.src="../img/favourite.png";
