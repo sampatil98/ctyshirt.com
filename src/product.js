@@ -3,8 +3,10 @@ let popup=document.getElementById("popup");
 let bagtitle=document.getElementById("title_bag");
 let bagprice=document.getElementById("price_bag");
 let bagimg=document.getElementById("bag_img");
-let data=JSON.parse(localStorage.getItem("product"));
+let container=document.getElementById("popup");
 
+let data=JSON.parse(localStorage.getItem("product"));
+let token=JSON.parse(localStorage.getItem("token"));
 
 window.addEventListener("load",()=>{
     showdata(data);
@@ -88,10 +90,64 @@ function showdata(data){
     btn4.setAttribute("id","add_to_bag_btn");
 
     btn4.addEventListener("click",()=>{
+        let obj={
+            "img":data.img,
+            "catagory":data.catagory,
+            "title":data.title,
+            "price":data.price,
+            "color":data.color,
+            "rating":data.rating, 
+            "desc":data.desc, 
+            "fit":data.fit,
+            "size":data.size
+        }
+        // let isadded=addtobag(data);
         bagtitle.innerText=data.title;
         bagprice.innerText=`$${data.price}`;
         bagimg.src=data.img;
-        popup.classList.add("open-popup");
+        // console.log("token :",token);
+        fetch("http://localhost:8080/cart/add",{
+        method:"POST",
+        headers:{
+            "Content-type":"application/json",
+            "authorization":`Bearer ${token}`
+        },
+        body: JSON.stringify(obj)
+    })
+    .then((res)=>{
+        return res.json();
+    })
+    .then((res) =>{
+        if(res.msg){
+            popup.classList.add("open-popup");
+        }else {
+            // console.log("entered");
+            container.innerHTML=`
+            <h4 class="err_msg">Already added to Bag </h4>
+            <button class="go_to_bag_btn" onclick="gotobag()">GO TO BAG</button>
+            <button class="continue_btn" onclick="closepopup()">CONTINUE SHOPPING</button>
+            `
+            popup.classList.add("open-popup");
+        }
+        
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+
+        // if(isadded){
+        //     bagtitle.innerText=data.title;
+        //     bagprice.innerText=`$${data.price}`;
+        //     bagimg.src=data.img;
+        //     popup.classList.add("open-popup");
+        // }else{
+        //     container.innerHTML=`
+        //     <h4>Already added to Bag </h4>
+        //     <button class="go_to_bag_btn" onclick="gotobag()">GO TO BAG</button>
+        //     `
+        //     popup.classList.add("open-popup");
+        // }
+        
         
     })
 
@@ -123,4 +179,24 @@ function showdata(data){
     card.append(div1,div2);
     main.append(card);
 
-}
+};
+
+// function addtobag(data){
+//     fetch("http://localhost:8080/cart/add",{
+//         method:"POST",
+//         headers:{
+//             "Content-type":"application/json",
+//             "authorization":`Bearer ${token}`
+//         },
+//         body: JSON.stringify(data)
+//     })
+//     .then((req)=>{
+//         return req.json();
+//     })
+//     .then((data) =>{
+        
+//     })
+//     .catch(err=>{
+//         console.log(err);
+//     })
+// }

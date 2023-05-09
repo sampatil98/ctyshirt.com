@@ -1,5 +1,18 @@
 let main=document.getElementById("product_div");
 
+let slimfit=document.getElementById("slim_fit");
+let regularfit=document.getElementById("regular_fit");
+let extraslimfit=document.getElementById("extra_slim_fit");
+
+// let filtercheckboxes=document.querySelector("input");
+// console.log(filtercheckboxes);
+var filterCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+// console.log(filterCheckboxes);
+
+
+
+
+let actualdata;
 
 window.addEventListener("load",()=>{
     fetchdata();
@@ -11,7 +24,7 @@ function fetchdata(){
         return res.json();
     })
     .then((data)=>{
-        console.log(data.data);
+        actualdata=data.data;
         showdata(data.data);
     })
     .catch((err)=>{
@@ -62,3 +75,80 @@ function showdata(data){
         
     });
 }
+// var $filterCheckboxes = $('input[type="checkbox"]');
+var filterFunc = function() {
+  
+  var selectedFilters = {};
+
+  filterCheckboxes.filter(':checked').each(function() {
+
+    if (!selectedFilters.hasOwnProperty(this.name)) {
+      selectedFilters[this.name] = [];
+    }
+
+    selectedFilters[this.name].push(this.value);
+  });
+
+  // create a collection containing all of the filterable elements
+  var $filteredResults = $('.flower');
+
+  // loop over the selected filter name -> (array) values pairs
+  $.each(selectedFilters, function(name, filterValues) {
+
+    // filter each .flower element
+    $filteredResults = $filteredResults.filter(function() {
+
+      var matched = false,
+        currentFilterValues = $(this).data('category').split(' ');
+
+      // loop over each category value in the current .flower's data-category
+      $.each(currentFilterValues, function(_, currentFilterValue) {
+
+        // if the current category exists in the selected filters array
+        // set matched to true, and stop looping. as we're ORing in each
+        // set of filters, we only need to match once
+
+        if ($.inArray(currentFilterValue, filterValues) != -1) {
+          matched = true;
+          return false;
+        }
+      });
+
+      // if matched is true the current .flower element is returned
+      return matched;
+
+    });
+  });
+
+  $('.flower').hide().filter($filteredResults).show();
+}
+
+$filterCheckboxes.on('change', filterFunc);  
+
+// filterCheckboxes.addEventListener("change",()=>{
+//     let arr=[];
+//     filterCheckboxes.forEach((ele,i)=>{
+//         if(ele.checked){
+//             actualdata.filter((item)=>{
+//                 if(ele.value==item.fit){
+//                    arr.push(item);
+//                 }
+//             });
+//         }
+//         // if(arr.length==0){
+//         //     showdata(actualdata)
+//         // }else{
+//         //     showdata(arr);
+//         //     arr=[]
+//         // }
+        
+//     })
+// })
+
+
+filterCheckboxes.forEach((ele,index)=>{
+    // let data=actualdata;
+    ele.addEventListener("change",()=>{
+        filterFunc();
+    })
+})

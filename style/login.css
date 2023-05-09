@@ -73,6 +73,71 @@
 #below_nav p:last-child{
     border: none;
 }
+#below_nav a{
+    text-decoration: none;
+}
+
+/* .........................dropdown menu.................................. */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+  }
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+.dropdown_container{
+     display: flex;
+     background-color: whitesmoke;
+    padding: 30px;
+    padding-bottom: 50px;
+
+}
+.img_container img{
+    width: 100%;
+}
+.img_container_shoes{
+    width: 60%;
+    text-align: center;
+}
+.img_container_shoes img{
+    width: 100%;
+}
+.img_container{
+    text-align: center;
+    width: 25%;
+}
+#below_nav .img_container p{
+    color: brown;
+    font-size: 12px;
+}
+#right_container{
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* padding-top: 20px; */
+    margin-right: 50px;
+}
+#right_container ul{
+    margin-top: 10px;
+}
+#right_container h3{
+    margin-top: 20px;
+}
+#left_container{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-left: 100px;
+}
+/* ....................DROPWOWN MENU ENDS HERE.......................... */
 
 /* ....................................................................................... */
 #main_div{
