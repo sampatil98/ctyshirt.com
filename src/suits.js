@@ -1,12 +1,12 @@
 let main=document.getElementById("product_div");
-
+const baseUrl="https://ctshirt.onrender.com"
 
 window.addEventListener("load",()=>{
     fetchdata();
 });
 
 function fetchdata(){
-    fetch("http://localhost:8080/product/?q=suit")
+    fetch(`${baseUrl}/product/?q=suit`)
     .then((res)=>{
         return res.json();
     })

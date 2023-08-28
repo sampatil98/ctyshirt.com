@@ -5,8 +5,7 @@
 }
 /*,....................... nav bar start here................................ */
 #navbar{
-    width: auto;
-    height: 80px;
+    height: 4rem;
     display: flex;
     justify-content:space-between ;
     align-items: center;
@@ -21,7 +20,7 @@
 }
 #logo_div img{
    width: 100%;
-   height:80px;
+   height:5rem;
 }
 #nav_leftdiv{
     display: flex;
@@ -50,9 +49,52 @@
     display: flex;
     align-items:center ;
     gap: 0px;
+    /* border: 1px solid gray;
+    border-bottom: 3px solid gray;
+    border-right: 3px solid gray; */
 }
 #searchbox:focus{
     outline: none;
+}
+#cart_fav_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#profile_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav_user{
+    width: 20px;
+}
+#profile_div{
+    padding: 5px 10px;
+    background-color: rgba(207, 232, 252, 0.326);
+    display: none;
+    border-radius: 20px;
+    border: 1px solid gray;
+    border-bottom: 3px solid gray;
+    border-right: 3px solid gray;
+    cursor: pointer;
+}
+/* colaps........ */
+.usersection {
+    
+    display: none;
+    overflow:hidden;
+}
+.usersection button{
+    padding: 10px;
+    background-color: rgb(102, 206, 240);
+    border: none;
+    border-radius: 15px;
+    color: black;
+    margin: 0 10px;
+    cursor: pointer;
 }
 
 /*,....................... nav bar ends here................................ */

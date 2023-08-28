@@ -8,6 +8,8 @@ let container=document.getElementById("popup");
 let data=JSON.parse(localStorage.getItem("product"));
 let token=JSON.parse(localStorage.getItem("token"));
 
+const baseUrl="https://ctshirt.onrender.com"
+
 window.addEventListener("load",()=>{
     showdata(data);
 });
@@ -99,14 +101,15 @@ function showdata(data){
             "rating":data.rating, 
             "desc":data.desc, 
             "fit":data.fit,
-            "size":data.size
+            "size":data.size,
+            "id":data._id
         }
-        // let isadded=addtobag(data);
+        
         bagtitle.innerText=data.title;
         bagprice.innerText=`$${data.price}`;
         bagimg.src=data.img;
-        // console.log("token :",token);
-        fetch("http://localhost:8080/cart/add",{
+        
+        fetch(`${baseUrl}/cart/add`,{
         method:"POST",
         headers:{
             "Content-type":"application/json",
@@ -118,16 +121,16 @@ function showdata(data){
         return res.json();
     })
     .then((res) =>{
-        if(res.msg){
-            popup.classList.add("open-popup");
-        }else {
-            // console.log("entered");
+        if(res.isError){
             container.innerHTML=`
             <h4 class="err_msg">Already added to Bag </h4>
             <button class="go_to_bag_btn" onclick="gotobag()">GO TO BAG</button>
             <button class="continue_btn" onclick="closepopup()">CONTINUE SHOPPING</button>
             `
             popup.classList.add("open-popup");
+        }else {
+            popup.classList.add("open-popup");
+            
         }
         
     })
@@ -180,23 +183,3 @@ function showdata(data){
     main.append(card);
 
 };
-
-// function addtobag(data){
-//     fetch("http://localhost:8080/cart/add",{
-//         method:"POST",
-//         headers:{
-//             "Content-type":"application/json",
-//             "authorization":`Bearer ${token}`
-//         },
-//         body: JSON.stringify(data)
-//     })
-//     .then((req)=>{
-//         return req.json();
-//     })
-//     .then((data) =>{
-        
-//     })
-//     .catch(err=>{
-//         console.log(err);
-//     })
-// }

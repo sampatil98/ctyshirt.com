@@ -11,13 +11,11 @@
     justify-content:space-between ;
     align-items: center;
     padding: 0px 50px;
-   
 }
 .nav_logo{
     width: 25px;
     height: 25px ;
     gap: 30px;
-   
 }
 #logo_div img{
    width: 100%;
@@ -32,7 +30,6 @@
     width: 250px;
     height: 40px;
     border: none;
-   
     padding-left: 10px;
 }
 #search_btn{
@@ -271,3 +268,40 @@ footer{
     margin-top: 10px;
     width: 30px;
 }
+
+
+/* ...........popup................. */
+.popup_div{
+   
+    /* width: 30%; */
+    height: 400px;
+    background-color: aliceblue;
+    padding: 10px;
+    /* display: none; */
+    position: absolute;
+    /* top: 0; */
+    left: 50%;
+    transform: translate(-50%, -50% ) scale(0.1);
+    /* visibility: hidden; */
+    transition: transform 0.4s, top 0.4s;
+}
+.open-popup{
+    top: 50%;
+    visibility: visible;
+    transform: translate(-50%, -50% ) scale(1);
+    /* text-align: center; */
+    border-radius: 15px;
+}
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

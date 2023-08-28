@@ -1,7 +1,18 @@
 let form=document.getElementById("signup_form");
+let container=document.getElementById("popup");
+const baseUrl=`https://ctshirt.onrender.com`;
+
+function closepopup(){
+    if(!data.isError){
+        popup.classList.remove("open-popup");
+        window.location.href="../login_signip.html";
+    }
+    
+};
 
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
+    popup.classList.add("open-popup");
     let obj={
         firstname:form.firstname.value,
         lastname:form.lastname.value,
@@ -9,7 +20,7 @@ form.addEventListener("submit",(e)=>{
         password:form.password.value,
         phone:form.phone.value
     }
-    fetch("http://localhost:8080/user/register",{
+    fetch(`${baseUrl}/user/register`,{
     method:"POST",
     headers:{
         "Content-type":"application/json"
@@ -20,10 +31,13 @@ form.addEventListener("submit",(e)=>{
     return res.json();
    })
    .then((data)=>{
-    // localStorage.setItem("user",json.stringify(data.user));
-    // localStorage.setItem("token",json.stringify(data.token));
-    alert(data.msg);
-    window.location.href="/login_signip.html";
+    popup.innerHTML=`
+    <h1>${data.message}</h1>
+    <button onclick="closepopup(data.isError)>close</button>
+    `
+    // alert(data.message);
+    
+    
     
    })
 })

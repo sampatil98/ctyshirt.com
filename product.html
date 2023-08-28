@@ -517,23 +517,24 @@
             </div>
         </div>
     </footer>
+    
     <div id="popup_container">
-    <div class="popup_div" id="popup">
-        <div class="popup_top_div">
-            <p>ADDED TO BAG</p>
-            <BUtton id="cancle" onclick="closepopup()">X</BUtton>
-        </div>
-        <div class="popup_middle_div">
-            <img id="bag_img" src="https://www.charlestyrwhitt.com/dw/image/v2/AAWJ_PRD/on/demandware.static/-/Sites-ctshirts-master/default/dwec327ffd/hi-res/JEP0390LPK_FOLD_SINGLE.jpg?sw=600&sh=750" alt="">
-            <div class="description">
-                <p>Added to bag ✔️</p>
-                <h4 id="title_bag"></h4>
-                <p id="price_bag"></p>
+        <div class="popup_div" id="popup">
+            <div class="popup_top_div">
+                <p>ADDED TO BAG</p>
+                <BUtton id="cancle" onclick="closepopup()">X</BUtton>
             </div>
+            <div class="popup_middle_div">
+                <img id="bag_img" src="https://www.charlestyrwhitt.com/dw/image/v2/AAWJ_PRD/on/demandware.static/-/Sites-ctshirts-master/default/dwec327ffd/hi-res/JEP0390LPK_FOLD_SINGLE.jpg?sw=600&sh=750" alt="">
+                <div class="description">
+                    <p>Added to bag ✔️</p>
+                    <h4 id="title_bag"></h4>
+                    <p id="price_bag"></p>
+                </div>
+            </div>
+            <button class="go_to_bag_btn" onclick="gotobag()">GO TO BAG</button>
+            <button class="continue_btn" onclick="closepopup()">CONTINUE SHOPPING</button>
         </div>
-        <button class="go_to_bag_btn" onclick="gotobag()">GO TO BAG</button>
-        <button class="continue_btn" onclick="closepopup()">CONTINUE SHOPPING</button>
-    </div>
     </div>
 </body>
 </html>

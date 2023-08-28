@@ -1,4 +1,5 @@
  let form=document.getElementById("login_form");
+ const baseUrl="https://ctshirt.onrender.com"
  
 
  form.addEventListener("submit",(e)=>{
@@ -7,7 +8,7 @@
     email:form.email.value,
     password:form.Password.value
    }
-   fetch("http://localhost:8080/user/login",{
+   fetch(`${baseUrl}/user/login`,{
     method:"POST",
     headers:{
         "Content-type":"application/json"
@@ -19,7 +20,7 @@
    })
    .then((data)=>{
      console.log(data.token);
-    alert(data.msg);
+    alert(data.message);
     
     if(data.token){
       localStorage.setItem("user",JSON.stringify(data.user));

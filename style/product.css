@@ -266,6 +266,7 @@ footer{
 .popup_div{
    
     width: 30%;
+    height: 300px;
     background-color: aliceblue;
     padding: 10px;
     /* display: none; */

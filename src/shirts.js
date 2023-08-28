@@ -8,7 +8,7 @@ let extraslimfit=document.getElementById("extra_slim_fit");
 // console.log(filtercheckboxes);
 var filterCheckboxes = document.querySelectorAll('input[type="checkbox"]');
 // console.log(filterCheckboxes);
-
+const baseUrl="https://ctshirt.onrender.com"
 
 
 
@@ -19,7 +19,7 @@ window.addEventListener("load",()=>{
 });
 
 function fetchdata(){
-    fetch("http://localhost:8080/product/?q=shirt")
+    fetch(`${baseUrl}/product/?q=shirt`)
     .then((res)=>{
         return res.json();
     })

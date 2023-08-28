@@ -8,12 +8,15 @@ let totalitems=0;
 let item_count=document.getElementById("item_count");
 let checkout=document.getElementById("checkout_btn");
 let paypalbtn=document.getElementById("paypal_pay_btn");
+
+const baseUrl="https://ctshirt.onrender.com";
+
 window.addEventListener("load",()=>{
     fetchdata();
 })
 
 function fetchdata(){
-    fetch("http://localhost:8080/cart/",{
+    fetch(`${baseUrl}/cart`,{
         method:"GET",
         headers:{
             "Content-type":"application/json",
@@ -50,7 +53,8 @@ function showData(data){
         remove.innerText="X";
 
         remove.addEventListener("click",()=>{
-            fetch(`http://localhost:8080/cart/${element["_id"]}`,{
+            
+            fetch(`${baseUrl}/cart/${element._id}`,{
                 method:"DELETE",
                 headers:{
                     "Content-type":"application/json",
@@ -61,8 +65,6 @@ function showData(data){
                 return res.json();
             })
             .then(data=>{
-                // localStorage.
-                
                 fetchdata();
             })
         })
@@ -131,6 +133,20 @@ function showData(data){
         totalprice.innerText=`$${element.price}`;
 
         div6.append(totalprice);
+
+        let btndiv=document.createElement("div");
+        btndiv.setAttribute("class","bybtndiv");
+
+        let buybtn=document.createElement("button");
+        buybtn.innerText="BUY NOW";
+        buybtn.setAttribute("class","buyitembtn");
+
+        buybtn.addEventListener("click",()=>{
+            alert("make payment page and create placed order route");
+        })
+
+        btndiv.append(buybtn);
+        div4.append(btndiv);
 
         card.append(div1,div2);
         main.append(card);
