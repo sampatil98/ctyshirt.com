@@ -1,2 +1,2 @@
-# boss-development-1619_ctyshirt
+#ctshirt.com
 clone of ctshirt.com
