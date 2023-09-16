@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signup</title>
-    <link rel="stylesheet" href="./style/signup.css">
-    
+    <title>product</title>
+    <link rel="stylesheet" href="./style/product.css">
 </head>
 <body>
     <nav id="navbar">
@@ -33,15 +32,6 @@
             
         </div>
     </nav>
-    <!--------------------- loader----------------- -->
-   <div id="loadercontent">
-    <div class="loaderanimation" id="loader"></div>
-   </div>
-   <div id="popup-message">
-        
-   </div>
-
-    <!-- ------------------------------------------- -->
     <div id="below_nav">
         <div class="dropdown">
             <a href="./shirts.html"><p>SHIRTS</p></a>
@@ -470,56 +460,8 @@
             
         </div>
     </div>
-
-    <div id="main_div">
-        <div id="signup_div">
-            <h3>Create account</h3>
-
-            <form id="signup_form">
-                <p>First name</p>
-                <input id="firstname"  type="string" required>
-
-                <p>Lastname</p>
-                <input id="lastname"  type="string" required><br>
-
-                <p>Email Address</p>
-                <input id="email"  type="email" required>
-
-                <p>Password</p>
-                <p id="pass_msg">(Your password should be atlist 8 characters)</p>
-                <input id="password"  type="password" required>
-
-                <p>Phone</p>
-                <input id="phone"  type="number" required><br>
-
-                <input type="submit" id="signup_btn" value="CREATE AN ACCOUNT">
-
-            </form>
-        </div>
-        <div id="signup_side_div">
-            <div class="sidediv_class">
-                <img src="https://www.charlestyrwhitt.com/on/demandware.static/-/Library-Sites-CTShirtsSharedLibrary/default/dw35ca6cf0/images/Guarantee.svg" alt="">
-                <div>
-                    <h5>6 MONTHS GUARANTEE</h5>
-                    <P>Exchange or return your purchase up to 6 months after receipt</P>
-                </div>
-            </div>
-            <div class="sidediv_class">
-                <img src="https://www.charlestyrwhitt.com/on/demandware.static/-/Library-Sites-CTShirtsSharedLibrary/default/dwb801377e/images/Security.svg" alt="">
-                <div>
-                    <h5>100% SECURE</h5>
-                    <P>Shopping is secure with Charles Trywhitt</P>
-                </div>
-            </div>
-            <div>
-                <h3>HAVE AN ACCOUNT</h3>
-                <a href="./login_signip.html"><button id="login_btn">CLICK HERE TO LOG IN</button></a>
-            </div>
-           
-        </div>
+    <div id="main">
         
-
-
     </div>
     <div id="contact_div">
         <p>We will keep you posted on new products and great offers</p>
@@ -528,7 +470,7 @@
             <button>></button>
         </div>
     </div>
-   
+
     <footer >
         <div class="footer_div">
             <p>HELP</p>
@@ -574,10 +516,26 @@
                 <img src="./img/twitter.png" alt="">
             </div>
         </div>
-
     </footer>
     
-    
+    <div id="popup_container">
+        <div class="popup_div" id="popup">
+            <div class="popup_top_div">
+                <p>ADDED TO BAG</p>
+                <BUtton id="cancle" onclick="closepopup()">X</BUtton>
+            </div>
+            <div class="popup_middle_div">
+                <img id="bag_img" src="https://www.charlestyrwhitt.com/dw/image/v2/AAWJ_PRD/on/demandware.static/-/Sites-ctshirts-master/default/dwec327ffd/hi-res/JEP0390LPK_FOLD_SINGLE.jpg?sw=600&sh=750" alt="">
+                <div class="description">
+                    <p>Added to bag ✔️</p>
+                    <h4 id="title_bag"></h4>
+                    <p id="price_bag"></p>
+                </div>
+            </div>
+            <button class="go_to_bag_btn" onclick="gotobag()">GO TO BAG</button>
+            <button class="continue_btn" onclick="closepopup()">CONTINUE SHOPPING</button>
+        </div>
+    </div>
 </body>
 </html>
-<script src="./src/signup.js"></script>
+<script src="./src/product.js"></script>
