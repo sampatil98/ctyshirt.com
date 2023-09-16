@@ -27,8 +27,15 @@ function fetchdata(){
         return res.json();
     })
     .then(data=>{
-         totalitems=data.data.length;
-        showData(data.data);
+        if(data.err){
+            alert("please login first");
+            window.location.href="../login_signip.html";
+
+        }else{
+            totalitems=data.data.length;
+            showData(data.data);
+        }
+         
     })
 };
 

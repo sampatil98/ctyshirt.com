@@ -269,39 +269,51 @@ footer{
     width: 30px;
 }
 
-
-/* ...........popup................. */
-.popup_div{
-   
-    /* width: 30%; */
-    height: 400px;
-    background-color: aliceblue;
-    padding: 10px;
-    /* display: none; */
-    position: absolute;
-    /* top: 0; */
-    left: 50%;
-    transform: translate(-50%, -50% ) scale(0.1);
-    /* visibility: hidden; */
-    transition: transform 0.4s, top 0.4s;
-}
-.open-popup{
-    top: 50%;
-    visibility: visible;
-    transform: translate(-50%, -50% ) scale(1);
-    /* text-align: center; */
-    border-radius: 15px;
-}
-.loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
+/* ******************** loader ************************* */
+.loaderanimation {
+    border: 4px solid rgb(76, 58, 215);
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 2s linear infinite;
-  }
-  
-  @keyframes spin {
+    border-top: 4px solid rgb(254, 255, 254); /* Loader color */
+    width: 25px;
+    height: 25px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 46%;
+    z-index: 1;
+    padding: 15px;
+}
+.hidden{
+    display: none;
+}
+
+#popup-message{
+    position: fixed;
+    display: none;
+    top: 18%;
+    left: 37%;
+    z-index: 1;
+    padding: 35px 20px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: rgba(228, 234, 240, 0.897);
+    width: 22%;
+}
+#popup-message img{
+    width: 30px;
+    margin-bottom: 10px;
+}
+#opoup-btn{
+    padding: 5px 15px;
+    background-color: rgb(30, 30, 120);
+    border: none;
+    border-radius: 10px;
+    color: aliceblue;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+}
