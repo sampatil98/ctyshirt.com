@@ -1,17 +1,23 @@
 let main=document.getElementById("product_div");
-const baseUrl="https://ctshirt.onrender.com"
+const baseUrl="https://ctshirt.onrender.com";
+
+const loader=document.getElementById("loader");
+const loadercontent=document.getElementById("loadercontent");
 
 window.addEventListener("load",()=>{
     fetchdata();
 });
 
 function fetchdata(){
+    loader.style.display = 'block';
     fetch(`${baseUrl}/product/?q=suit`)
     .then((res)=>{
         return res.json();
     })
     .then((data)=>{
         console.log(data.data);
+        loader.style.display = 'none';
+        loadercontent.classList.remove('hidden');
         showdata(data.data);
     })
     .catch((err)=>{

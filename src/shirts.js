@@ -8,7 +8,10 @@ let extraslimfit=document.getElementById("extra_slim_fit");
 // console.log(filtercheckboxes);
 var filterCheckboxes = document.querySelectorAll('input[type="checkbox"]');
 // console.log(filterCheckboxes);
-const baseUrl="https://ctshirt.onrender.com"
+const baseUrl="https://ctshirt.onrender.com";
+
+const loader=document.getElementById("loader");
+const loadercontent=document.getElementById("loadercontent");
 
 
 
@@ -19,12 +22,15 @@ window.addEventListener("load",()=>{
 });
 
 function fetchdata(){
+  loader.style.display = 'block';
     fetch(`${baseUrl}/product/?q=shirt`)
     .then((res)=>{
         return res.json();
     })
     .then((data)=>{
         actualdata=data.data;
+        loader.style.display = 'none';
+        loadercontent.classList.remove('hidden');
         showdata(data.data);
     })
     .catch((err)=>{

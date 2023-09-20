@@ -3,7 +3,7 @@ let popup=document.getElementById("popup");
 let bagtitle=document.getElementById("title_bag");
 let bagprice=document.getElementById("price_bag");
 let bagimg=document.getElementById("bag_img");
-let container=document.getElementById("popup");
+// let container=document.getElementById("popup");
 
 let data=JSON.parse(localStorage.getItem("product"));
 let token=JSON.parse(localStorage.getItem("token"));
@@ -122,7 +122,7 @@ function showdata(data){
     })
     .then((res) =>{
         if(res.isError){
-            container.innerHTML=`
+            popup.innerHTML=`
             <h4 class="err_msg">Already added to Bag </h4>
             <button class="go_to_bag_btn" onclick="gotobag()">GO TO BAG</button>
             <button class="continue_btn" onclick="closepopup()">CONTINUE SHOPPING</button>

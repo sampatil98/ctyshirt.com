@@ -9,9 +9,13 @@ let item_count=document.getElementById("item_count");
 let checkout=document.getElementById("checkout_btn");
 let paypalbtn=document.getElementById("paypal_pay_btn");
 
+const loader=document.getElementById("loader");
+const loadercontent=document.getElementById("loadercontent");
+
 const baseUrl="https://ctshirt.onrender.com";
 
 window.addEventListener("load",()=>{
+    loader.style.display = 'block';
     fetchdata();
 })
 
@@ -33,6 +37,8 @@ function fetchdata(){
 
         }else{
             totalitems=data.data.length;
+            loader.style.display = 'none';
+            loadercontent.classList.remove('hidden');
             showData(data.data);
         }
          
