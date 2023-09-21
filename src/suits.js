@@ -5,12 +5,13 @@ const loader=document.getElementById("loader");
 const loadercontent=document.getElementById("loadercontent");
 
 window.addEventListener("load",()=>{
-    fetchdata();
+    let endpoint=`${baseUrl}/product/?q=suit`
+    fetchdata(endpoint);
 });
 
-function fetchdata(){
+function fetchdata(target){
     loader.style.display = 'block';
-    fetch(`${baseUrl}/product/?q=suit`)
+    fetch(target)
     .then((res)=>{
         return res.json();
     })
@@ -68,3 +69,12 @@ function showdata(data){
         
     });
 }
+
+// sort functionality
+
+const sortoption=document.getElementById("sort-option");
+
+sortoption.addEventListener("change",()=>{
+    let endpoint=`${baseUrl}/product/?q=suit&sort=${sortoption.value}`;
+   fetchdata(endpoint);
+});
