@@ -10,7 +10,7 @@ let checkout=document.getElementById("checkout_btn");
 let paypalbtn=document.getElementById("paypal_pay_btn");
 
 let token=JSON.parse(localStorage.getItem("token"));
-const user=JSON.parse(localStorage.getItem("userInfo"));
+const user=JSON.parse(localStorage.getItem("user"));
 console.log(user);
 
 const loader=document.getElementById("loader");
