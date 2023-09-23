@@ -2,12 +2,16 @@
 let main=document.getElementById("main_container");
 let price=document.getElementById("price");
 let total_amt=document.getElementById("total_amt");
-let token=JSON.parse(localStorage.getItem("token"));
+
 let cartdata=JSON.parse(localStorage.getItem("cartdata")) || [];
 let totalitems=0;
 let item_count=document.getElementById("item_count");
 let checkout=document.getElementById("checkout_btn");
 let paypalbtn=document.getElementById("paypal_pay_btn");
+
+let token=JSON.parse(localStorage.getItem("token"));
+const user=JSON.parse(localStorage.getItem("userInfo"));
+console.log(user);
 
 const loader=document.getElementById("loader");
 const loadercontent=document.getElementById("loadercontent");
@@ -66,20 +70,7 @@ function showData(data){
         remove.innerText="X";
 
         remove.addEventListener("click",()=>{
-            
-            fetch(`${baseUrl}/cart/${element._id}`,{
-                method:"DELETE",
-                headers:{
-                    "Content-type":"application/json",
-                    "authorization":`Bearer ${token}`
-                }
-            })
-            .then(res=>{
-                return res.json();
-            })
-            .then(data=>{
-                fetchdata();
-            })
+            deletitem(element._id)
         })
 
         div1.append(h4,remove);
@@ -154,8 +145,8 @@ function showData(data){
         buybtn.innerText="BUY NOW";
         buybtn.setAttribute("class","buyitembtn");
 
-        buybtn.addEventListener("click",()=>{
-            alert("make payment page and create placed order route");
+        buybtn.addEventListener("click",(e)=>{
+            createorder(element.price,element._id)
         })
 
         btndiv.append(buybtn);
@@ -190,4 +181,73 @@ paypalbtn.addEventListener("click",()=>{
         alert("ORDER PLACED");
         window.location.href="../index.html";
     }
-})
+});
+
+// remove itam 
+
+let deletitem=(id)=>{
+    fetch(`${baseUrl}/cart/${id}`,{
+        method:"DELETE",
+        headers:{
+            "Content-type":"application/json",
+            "authorization":`Bearer ${token}`
+        }
+    })
+    .then(res=>{
+        return res.json();
+    })
+    .then(data=>{
+        fetchdata();
+    })
+}
+
+// payment
+
+let createorder = (amount,id)=>{
+    let payload={
+        amount
+    }
+    fetch(`${baseUrl}/payment/makepayment`,{
+        method:"POST",
+        headers:{
+            "Content-type":"application/json",
+            "authorization":`Bearer ${token}`
+        },
+        body:JSON.stringify(payload)
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+        if(!data.isError){
+            
+            var options = {
+                "key": "rzp_test_sM1dXnkUbFlSrd", // Enter the Key ID generated from the Dashboard
+                "amount": data.payment_data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "Ctshirt application", //your business name
+                "description": "Test Transaction",
+                "image": "https://example.com/your_logo",
+                "order_id": data.payment_data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+                    "name": user.name, //your customer's name
+                    "email":user.email,
+                    "contact": "9834635130" //Provide the customer's phone number for better conversion rates 
+                },
+                "notes": {
+                    "address": "Razorpay Corporate Office"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+            deletitem(id);
+
+        }else{
+            alert("internal server error please try after some time")
+        }
+    })
+        
+    
+
+}
