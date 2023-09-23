@@ -228,9 +228,9 @@ let createorder = (amount,id)=>{
                 "image": "https://example.com/your_logo",
                 "order_id": data.payment_data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                 "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-                    "name": user.name, //your customer's name
+                    "name": user.firstname, //your customer's name
                     "email":user.email,
-                    "contact": "9834635130" //Provide the customer's phone number for better conversion rates 
+                    "contact": user.phone //Provide the customer's phone number for better conversion rates 
                 },
                 "notes": {
                     "address": "Razorpay Corporate Office"
